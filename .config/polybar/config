@@ -1,0 +1,183 @@
+; Doc: https://github.com/jaagr/polybar
+; Wiki: https://github.com/jaagr/polybar/wiki
+
+[colors]
+active = #D8DEE9
+background = #222D32
+foreground = #D8DEE9
+urgent = #BF616A
+secondary = #4C566A
+underline = #EBCB8B
+ram = #8FBCBB
+cpu = #5E81AC
+spotify = #A3BE8C
+power= #ff3300
+
+[bar/default]
+height = 32
+offset-y = 0
+top = true
+fixed-center = true
+background = #222D32
+foreground = #D8DEE9
+
+line-size = 3
+line-color = #f00
+
+padding-left = 0
+padding-right = 3
+module-margin = 2
+
+font-0 = System San Francisco Display:size=10;2
+font-1 = FontAwesome:size=11;3
+font-2 = MaterialIcons:size=11;4
+
+modules-left = i3
+modules-center = xwindow
+modules-right = spotify volume date powermenu
+
+[bar/left]
+inherit = bar/default
+monitor = DVI-0
+modules-left = i3
+modules-right = cpu memory
+
+[bar/right]
+inherit = bar/default
+monitor = HDMI-0
+modules-left = i3
+modules-center =
+modules-right = spotify volume date powermenu
+padding-left = 3
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+index-sort = true
+enable-click = true
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+format = <label-mode><label-state>
+label-mode-padding = 2
+label-focused = %index%  %icon%
+label-focused-padding = 2
+label-unfocused = %index%  %icon%
+label-unfocused-padding = 2
+label-visible = %index%  %icon%
+label-visible-padding = 2
+label-urgent = %index%  %icon%
+label-urgent-padding = 2
+label-focused-foreground = ${colors.active}
+label-focused-background = #29373d
+label-focused-underline = ${colors.underline}
+label-visible-foreground = ${colors.active}
+label-unfocused-foreground = ${colors.secondary}
+label-urgent-foreground = ${colors.urgent}
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.secondary}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <label>
+format-prefix = "  "
+label = %percentage%%
+format-foreground = ${colors.cpu}
+label-foreground = ${colors.cpu}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = " "
+label = %percentage_used%%
+format-foreground = ${colors.ram}
+label-foreground = ${colors.ram}
+
+[module/date]
+type = internal/date
+date = %{F#88C0D0}   %{F#4C566A}%B %d,  %{F#D8DEE9}%H:%M
+
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume> <bar-volume>
+format-muted =  
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-foreground = ${colors.active}
+bar-volume-width = 6
+bar-volume-indicator =
+bar-volume-fill = 
+bar-volume-fill-font = 3
+bar-volume-fill-foreground = ${colors.foreground}
+bar-volume-empty = 
+bar-volume-empty-font = 3
+bar-volume-empty-foreground = ${colors.secondary}
+
+[module/wired]
+type = internal/network
+interface = eth0
+format-connected = <label-connected>
+format-connected-underline = ${colors.underline}
+format-disconnected = <label-disconnected>
+label-connected =  %local_ip%
+label-disconnected = 
+
+[module/powermenu]
+type = custom/menu
+label-active-font = 1
+format-spacing = 1
+label-open = 
+label-open-foreground = ${colors.power}
+label-close = 
+label-close-foreground = ${colors.power}
+label-separator = |
+label-separator-foreground = ${colors.secondary}
+
+menu-0-0 = reboot
+menu-0-0-foreground = ${colors.foreground}
+menu-0-0-exec = reboot
+menu-0-1 = power off
+menu-0-1-foreground = ${colors.foreground}
+menu-0-1-exec = poweroff
+
+[module/spotify]
+type = custom/script
+exec-if = ~/.config/polybar/spotify.sh --isPlaying
+exec = ~/.config/polybar/spotify.sh --title
+click-left = i3-msg workspace 8
+interval = 5
+format=   <label>
+format-foreground= ${colors.spotify}
+format-underline = ${colors.spotify}
+label = %output%
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
