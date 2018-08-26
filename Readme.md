@@ -1,6 +1,6 @@
 # Dotfiles for my main system
 
-[conf](conf.png)
+![conf](conf.png)
 
 ## Keyboard mapping
 
