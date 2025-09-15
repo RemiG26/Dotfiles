@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="drm", RUN+="/bin/sh -c 'sleep 3 && /usr/bin/systemctl --user -M gavinr@ restart set-wallpaper.service'"

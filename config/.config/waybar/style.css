@@ -1,0 +1,151 @@
+@import "mocha.css";
+
+* {
+    font-family: "JetbrainsMono Nerd Font";
+    font-size: 14px;
+    min-height: 0px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background: transparent;
+    color: @overlay0;
+    transition-property: background-color;
+    transition-duration: 0.1s;
+}
+
+window#waybar.main {
+    background-color: rgba(0,0,0,0);
+    border-bottom: 1px solid @overlay1;
+}
+
+window#waybar.audiolay {
+    background-color: @crust;
+}
+
+#window {
+    margin: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+button {
+    box-shadow: inset 0 -3px transparent;
+    border: none;
+    border-radius: 0px;
+}
+
+button:hover {
+    background: inherit;
+    color: @mauve;
+    border-top: 2px solid @mauve;
+}
+
+#workspaces button {
+    padding: 0 4px;
+}
+
+#workspaces button.focused {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: @rosewater;
+    border-top: 2px solid @rosewater;
+}
+
+#workspaces button.active {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: @mauve;
+    border-top: 2px solid @mauve;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#workspaces button label {
+    padding-right: 8px;
+}
+
+#pulseaudio,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#wireplumber,
+#tray,
+#network,
+#mode,
+#scratchpad,
+#custom-battery-degradation {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#clock {
+    color: @maroon;
+    border-bottom: 2px solid @maroon;
+}
+
+#clock.date {
+    color: @mauve;
+    border-bottom: 2px solid @mauve;
+}
+
+#pulseaudio {
+    color: @blue;
+    border-bottom: 2px solid @blue;
+}
+
+#network {
+    color: @yellow;
+    border-bottom: 2px solid @yellow;
+}
+
+#backlight {
+    opacity: 0.7;
+    color: @peach;
+    border-bottom: 2px solid @peach;
+}
+
+#battery {
+    color: @green;
+    border-bottom: 2px solid @green;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left>widget:first-child>#workspaces {
+    margin-left: 0px;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right>widget:last-child>#workspaces {
+    margin-right: 0px;
+}
+
+#custom-battery-degradation {
+  opacity: 0.7;
+/*  border-radius: 0px 10px 10px 0px; */
+  min-width: 35px;
+  color: @rosewater;
+  border-bottom: 2px solid @rosewater;
+}
+
+#battery.critical {
+  color: @red;
+}
+
+#custom-playerinfo {
+  box-shadow: inset 0 -3px #ffffff;
+  min-width: 80px;
+}
+
+#custom-cava {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.7);
+}

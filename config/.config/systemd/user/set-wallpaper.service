@@ -1,0 +1,9 @@
+[Unit]
+Description=Set wallpaper using SWWW
+After=swww.service
+
+[Service]
+ExecStart=/usr/bin/swww img %h/Wallpaper/Wallpaper.gif
+
+[Install]
+WantedBy=default.target
