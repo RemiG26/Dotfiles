@@ -22,5 +22,8 @@ set --export PATH "$HOME/go/bin" $PATH
 # Nvm
 set --export NVM_DIR "$HOME/.nvm"
 
+# Composer
+set --export PATH "$HOME/.config/composer/vendor/bin" $PATH
+
 starship init fish | source
 enable_transience
