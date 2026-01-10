@@ -25,5 +25,8 @@ set --export NVM_DIR "$HOME/.nvm"
 # Composer
 set --export PATH "$HOME/.config/composer/vendor/bin" $PATH
 
+ # Sail
+alias sail "sh $([ -f sail ] && echo sail || echo vendor/bin/sail)"
+
 starship init fish | source
 enable_transience
