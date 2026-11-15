@@ -16,6 +16,8 @@ abbr getclip "xclip -selection c -o"
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
 
+set --export PATH ="home/gavinr/.local/bin" $PATH
+
 # Go
 set --export PATH "$HOME/go/bin" $PATH
 
@@ -30,3 +32,7 @@ alias sail "sh $([ -f sail ] && echo sail || echo vendor/bin/sail)"
 
 starship init fish | source
 enable_transience
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/home/gavinr/.local/bin" $PATH
